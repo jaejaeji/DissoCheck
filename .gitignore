@@ -4,3 +4,4 @@ __pycache__/
 *.xlsx
 *.csv
 !tests/answer_keys/*.xlsx
+!tests/data/*.csv
