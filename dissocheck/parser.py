@@ -1,5 +1,8 @@
 import re
 
+ROLE_ALIASES = {"WS":["ws", "wstd", "wk std", "working standard", "working std"], "CS":["cs", "cstd", "check standard", "check std", "control standard", "control std"]}
+
+
 def parse_sample_name(name):
 
     name_match = re.fullmatch(r"(\d+)-(\d+)( .*)?", name)
@@ -12,4 +15,13 @@ def parse_sample_name(name):
 
     return vessel, timepoint
 
-# print(parse_sample_name("10-1"))
+
+def find_role(name):
+
+    cleaned = name.strip().lower()
+
+    for role, aliases in ROLE_ALIASES.items():
+
+        if cleaned in aliases:
+            return role
+    return None
