@@ -6,7 +6,7 @@ Verified by: 10-1 should translate to (Vessel 1, Timepoint 10 minutes), 15-10 in
 R2. Reject a malformed name. Raises an error
 Verified by: unacceptable/unrecognizeable title name or typos = 10-, V1-T10, V3-T raises a ValueError naming the bad input. Blank, WS and CS injections are handled before the parser
 
-R3. Recognize the standard injection order (blank, 6 WS, CS, media blank, a bracket every 6)
+R3. Recognize the standard injection order (blank, 6 WS, CS, media blank, a bracket every 6). Fewer or more than 6 WS is an error. Standard names come from config alias lists.
 Verified by: a synthetic sequence goes in and each injection gets a role. If only 5 WS is present an error is raised.
 
 R4. Make the file name safe. Names that include unaccepted formats such as 40C/75%RH should be 40C-75RH instead
