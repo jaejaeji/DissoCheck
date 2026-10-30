@@ -8,11 +8,15 @@ def read_export(csv_path):
     bad_names = []
     good_names = []
     
-    for name in df["Sample Name"]:
+    for i, row in df.iterrows():
+        name = row["Sample Name"]
+        area = row["Peak Area"]
+
         if name == "WS":
             continue
         try:
-            good_names.append(parse_sample_name(name))
+            vessel, timepoint = parse_sample_name(name)
+            good_names.append({"name": name, "vessel": vessel, "timepoint": timepoint, "peak area": area,})
         except ValueError:
             bad_names.append(name)
 
