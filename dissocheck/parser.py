@@ -1,6 +1,10 @@
 import re
 
-ROLE_ALIASES = {"WS":["ws", "wstd", "wk std", "working standard", "working std"], "CS":["cs", "cstd", "check standard", "check std", "control standard", "control std"]}
+ROLE_ALIASES = {
+    "WS":["ws", "wstd", "wk std", "working standard", "working std"], 
+    "CS":["cs", "cstd", "check standard", "check std", "control standard", "control std"], 
+    "BWS":["bws", "bstd", "brk", "brk std", "bracket", "bracket std", "bracketing std", "bracket standard", "bracketing standard", "bracketing ws", "bracketing wstd", "bracket ws", "bracket wstd"]
+                }
 
 
 def parse_sample_name(name):
@@ -22,6 +26,11 @@ def find_role(name):
 
     for role, aliases in ROLE_ALIASES.items():
         for alias in aliases:
-            if cleaned == alias or cleaned.startswith(alias + " "):
-                return role
+            if cleaned.startswith(alias):
+                leftover = cleaned[len(alias):]
+                if leftover == "" or leftover[0] in " -0123456789":
+                    return role
     return None
+
+from dissocheck.parser import find_role
+find_role("WS"); find_role("WS2"); find_role("BWS-5"); find_role("Brk Std-1"); find_role("CS 20.10mg");  find_role("WSX"); 
