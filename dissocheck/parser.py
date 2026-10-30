@@ -21,7 +21,7 @@ def find_role(name):
     cleaned = name.strip().lower()
 
     for role, aliases in ROLE_ALIASES.items():
-
-        if cleaned in aliases:
-            return role
+        for alias in aliases:
+            if cleaned == alias or cleaned.startswith(alias + " "):
+                return role
     return None

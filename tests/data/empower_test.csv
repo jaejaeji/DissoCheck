@@ -1,7 +1,7 @@
 Sample Name,Compound Name,Retention Time (min),Peak Area
-CS,Drug,3.21,1049520
-CS,Drug,3.21,1049521
-WS,Drug,3.21,1052340
+CS 20.10mg,Drug,3.21,1049521
+Check Std 20mg,Drug,3.21,1049520
+WSTD,Drug,3.21,1052340
 WS,Drug,3.21,1052540
 WS,Drug,3.21,1052640
 WS,Drug,3.21,1053540

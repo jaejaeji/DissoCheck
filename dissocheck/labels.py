@@ -1,5 +1,3 @@
-from dissocheck.parser import parse_sample_name
-
 
 def label_injections(rows):
 
@@ -18,10 +16,10 @@ def label_injections(rows):
           elif row["role"] == "sample":
                row["label"] = f"V{row["vessel"]}-T{row["timepoint"]}"
           else:
-               raise ValueError(f"{row["role"]} role note found")
+               raise ValueError(f"{row["role"]} role not found")
 
-     if count_ws < 6:
-          raise ValueError(f"# of WS injections is {count_ws} (under 6).")
+     if count_ws != 6:
+          raise ValueError(f"# of WS injections is {count_ws} (not 6).")
 
 
      return rows
