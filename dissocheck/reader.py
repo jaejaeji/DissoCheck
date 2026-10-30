@@ -13,11 +13,8 @@ def read_export(csv_path):
         area = row["Peak Area"]
         role = "sample"
 
-        if name == "WS":
-            good_names.append({"name": name, "vessel": None, "timepoint": None, "peak area": area, "role": "WS"})
-            continue
-        elif name == "CS":
-            good_names.append({"name": name, "vessel": None, "timepoint": None, "peak area": area, "role": "CS"})
+        if name in ("WS", "CS"):
+            good_names.append({"name": name, "vessel": None, "timepoint": None, "peak area": area, "role": name})
             continue
         try:
             vessel, timepoint = parse_sample_name(name)
